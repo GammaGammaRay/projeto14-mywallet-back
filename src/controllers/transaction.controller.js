@@ -1,7 +1,6 @@
 import db from "../database/mongoDB.js";
 import { ObjectId } from "mongodb";
 
-
 const addTransaction = async (req, res) => {
   const { description, amount, type } = req.body;
   try {
@@ -22,11 +21,14 @@ const addTransaction = async (req, res) => {
 const listTransactions = async (req, res) => {
   try {
     const userID = res.locals.userId;
-    const user = await db.collection("users").findOne({ _id: userID });
+    const user = await db
+      .collection("sessions")
+      .findOne({ token: req.headers.authorization.replace("Bearer ", "") });
+    console.log(user.userId);
     if (!user) return res.status(404).send("User not found");
     const transactions = await db
       .collection("transactions")
-      .find({ userID })
+      .find({ userId: new ObjectId(user.userId) })
       .sort({ $natural: -1 })
       .toArray();
     res.send(transactions);
