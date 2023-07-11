@@ -1,4 +1,4 @@
-import db from "../database/mongoDB";
+import db from "../database/mongoDB.js";
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 

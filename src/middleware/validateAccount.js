@@ -1,4 +1,4 @@
-import db from "../database/mongoDB";
+import db from "../database/mongoDB.js";
 
 export default async function validateAccount(req, res, next) {
   const authorization = req.headers.authorization;

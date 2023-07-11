@@ -1,4 +1,6 @@
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+import chalk from "chalk";
 
 dotenv.config();
 const mongoClient = new MongoClient(process.env.DATABASE_URL);

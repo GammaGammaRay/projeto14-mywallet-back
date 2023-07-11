@@ -1,4 +1,4 @@
-import db from "../database/mongoDB";
+import db from "../database/mongoDB.js";
 import { ObjectId } from "mongodb";
 import { stripHtml } from "string-strip-html";
 

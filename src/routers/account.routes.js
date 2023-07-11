@@ -7,11 +7,11 @@ import validateAccount from "../middleware/validateAccount.js";
 
 const accountRouter = Router();
 
-userRouter.post("/sign-in", validateRequest(signIn_schema), signIn);
-userRouter.post("/sign-up", validateRequest(signUp_schema), signUp);
+accountRouter.post("/sign-in", validateRequest(signIn_schema), signIn);
+accountRouter.post("/sign-up", validateRequest(signUp_schema), signUp);
 
-userRouter.use(validateAccount);
+accountRouter.use(validateAccount);
 
-userRouter.delete("/sign-out", signOut);
+accountRouter.delete("/sign-out", signOut);
 
 export default accountRouter;
